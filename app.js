@@ -1,5 +1,4 @@
 const express = require('express');
-const exphbs  = require('express-handlebars');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const app = express();
@@ -19,15 +18,8 @@ const ItemModel = new mongoose.model('ItemModel', ItemSchema);
 app.use(express.static('public'))
 app.use(bodyParser.json());
 
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
-
 const PORT = 3000;
 const APP_URL = 'http://localhost:' + PORT;
-
-app.get('/', (req, res) => {
-    res.render('home', {});
-});
 
 app.post('/transaction', (req, res) => {
     const ammount = req.body.ammount;
