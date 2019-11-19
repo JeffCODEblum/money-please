@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 
 app.post('/transaction', (req, res) => {
     const ammount = req.body.ammount;
-    const itemModel = new ItemModel({name: 'test', ammount: ammount, timestamp: Date.nown()});
+    const itemModel = new ItemModel({name: 'test', ammount: ammount, timestamp: Date.now()});
     itemModel.save((doc, err) => {
         if (err) {
             console.log(err);
