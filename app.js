@@ -29,4 +29,18 @@ app.get('/', (req, res) => {
     res.render('home', {});
 });
 
+app.post('/transaction', (req, res) => {
+    const ammount = req.body.ammount;
+    const itemModel = new ItemModel({name: 'test', ammount: ammount, timestamp: Date.nown()});
+    itemModel.save((doc, err) => {
+        if (err) {
+            console.log(err);
+        }
+        if (doc) {
+            console.log("$" + ammount + "   " + doc.timestamp);
+            res.send(true);
+        }
+    });
+});
+
 app.listen(PORT);
